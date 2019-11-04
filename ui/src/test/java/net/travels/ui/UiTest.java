@@ -5,6 +5,7 @@ import net.travels.ui.pageClasses.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
+import static net.travels.ui.helpers.properties.UrlLinksProp.MAIN_URL;
 
 public class UiTest extends BaseTest {
 
@@ -14,12 +15,12 @@ public class UiTest extends BaseTest {
 
   @BeforeMethod
   public void openMainPage(){
-    open(baseUrl);
+    open(MAIN_URL);
     clearBrowserCookies();
   }
 
-  @Test(description = "Register user with valid data with different languages"
-          ,dataProvider = "Language", dataProviderClass = DataProviderLanguage.class)
+  @Test(description = "Register user with valid data with different languages",
+           dataProvider = "Language", dataProviderClass = DataProviderLanguage.class)
   public void registerUserWithValidData(String lang){
     mainPage.clickToLanguageDropdown();
     mainPage.selectLanguage(lang);
@@ -34,8 +35,8 @@ public class UiTest extends BaseTest {
     accountPage.checkEmail(customerData.getEmail());
   }
 
-  @Test(description = "Register user without first name"
-          ,dataProvider = "Language", dataProviderClass = DataProviderLanguage.class)
+  @Test(description = "Register user without first name",
+           dataProvider = "Language", dataProviderClass = DataProviderLanguage.class)
   public void registerUserWithoutFirstName(String lang){
     mainPage.clickToLanguageDropdown();
     mainPage.selectLanguage(lang);
@@ -48,8 +49,8 @@ public class UiTest extends BaseTest {
             .clickOnSignUpButton();
   }
 
-  @Test(description = "Register user without last name"
-          ,dataProvider = "Language", dataProviderClass = DataProviderLanguage.class)
+  @Test(description = "Register user without last name",
+          dataProvider = "Language", dataProviderClass = DataProviderLanguage.class)
   public void registerUserWithoutLastName(String lang){
     mainPage.clickToLanguageDropdown();
     mainPage.selectLanguage(lang);
